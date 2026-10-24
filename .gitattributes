@@ -1,0 +1,12 @@
+# Normaliza finais de linha (evita conflitos entre Windows e Linux)
+* text=auto eol=lf
+
+# Arquivos binários
+*.png binary
+*.jpg binary
+*.glb binary
+*.ogg binary
+*.wav binary
+*.mp3 binary
+*.ttf binary
+*.otf binary

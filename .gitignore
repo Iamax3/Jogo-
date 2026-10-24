@@ -1,0 +1,15 @@
+# Godot 4
+.godot/
+/android/
+
+# Exportações
+/build/
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editores
+.vscode/
+*.tmp
