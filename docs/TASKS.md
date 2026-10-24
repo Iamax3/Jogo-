@@ -45,7 +45,7 @@ Regras: cada IA só pega tarefas com a sua marca. Antes de começar, mude o stat
 
 ### T-103 · Sistema de interação
 - **Dono:** @codex
-- **Status:** pendente
+- **Status:** em andamento
 - **Depende de:** T-101 (usa a ação `interact`)
 - **Arquivos:** `scenes/interactables/`, `scripts/interactables/`, `scenes/ui/interaction_prompt.tscn`, `scripts/ui/interaction_prompt.gd`
 - **Pronto quando:** existe uma classe base `Interactable` (um `Area3D` ou `StaticBody3D` com `interact()` e um texto de dica). Ao mirar num objeto, aparece "E — Examinar" na tela; ao apertar E, o objeto reage. Inclui um exemplo: uma nota que mostra um texto na tela. A forma de detectar o objeto mirado (RayCast3D na câmera do jogador) deve ser documentada para o Claude integrar ao jogador.
