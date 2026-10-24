@@ -21,7 +21,7 @@ Regras: cada IA só pega tarefas com a sua marca. Antes de começar, mude o stat
 
 ### T-003 · Predefinição de exportação para Windows
 - **Dono:** @codex
-- **Status:** revisão
+- **Status:** feito
 - **Arquivos:** `export_presets.cfg`, `docs/EXPORTAR.md`
 - **Pronto quando:** existe uma predefinição "Windows Desktop" que exporta para `build/windows/`, e `docs/EXPORTAR.md` explica em passos simples como o diretor gera o `.exe`.
 
@@ -32,16 +32,16 @@ Regras: cada IA só pega tarefas com a sua marca. Antes de começar, mude o stat
 
 ### T-101 · Controle em primeira pessoa
 - **Dono:** @claude
-- **Status:** pendente
-- **Arquivos:** `scenes/player/`, `scripts/player/`, seção `[input]` do `project.godot`
+- **Status:** revisão
+- **Arquivos:** `scenes/player/player.tscn`, `scripts/player/player.gd`, `scenes/levels/player_sandbox.tscn` (área de teste provisória), seções `[input]` e `run/main_scene` do `project.godot`
 - **Pronto quando:** cena `player.tscn` com andar (WASD), olhar (mouse), agachar (Ctrl), passos lentos e pesados combinando com terror. Velocidade e sensibilidade são `@export`. Ações de input criadas: `move_forward`, `move_back`, `move_left`, `move_right`, `crouch`, `interact` (E), `flashlight` (F).
 
 ### T-102 · Cena de teste com clima de terror
 - **Dono:** @claude
 - **Status:** pendente
 - **Depende de:** T-101
-- **Arquivos:** `scenes/levels/test_room.tscn`, `scripts/levels/`
-- **Pronto quando:** um quarto fechado com móveis simples, iluminação baixa, neblina volumétrica e `WorldEnvironment` configurado. O jogador da T-101 começa dentro dele.
+- **Arquivos:** `scenes/levels/test_room.tscn`, `scripts/levels/`, `run/main_scene` do `project.godot`
+- **Pronto quando:** um quarto fechado com móveis simples, iluminação baixa, neblina volumétrica e `WorldEnvironment` configurado. O jogador da T-101 começa dentro dele. O quarto vira a **cena principal** do projeto (no lugar de `player_sandbox.tscn`), para a exportação da T-003 gerar algo jogável.
 
 ### T-103 · Sistema de interação
 - **Dono:** @codex
