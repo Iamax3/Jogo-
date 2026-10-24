@@ -54,6 +54,12 @@ Ainda em definição pelo diretor. Perguntas em aberto:
 - `is_crouching() -> bool`.
 - Ações de input já criadas: `move_forward`, `move_back`, `move_left`, `move_right`, `crouch`, `interact` (E), `flashlight` (F).
 
+### Interação — `scenes/interactables/` (`class_name Interactable`)
+- O jogador já vem com o raio de interação (`InteractionRay`, filho da câmera) e a interface de dica e leitura.
+- Novo objeto: `StaticBody3D` com script que estende `Interactable`, colisão na camada 1 e um visual.
+- `interaction_hint` (texto depois de "E —"), `examination_text` (abre a leitura; vazio = só reage), `interaction_enabled`, sinal `interacted`, método `interact()`.
+- Durante a leitura o jogador fica travado (`input_enabled = false`). Detalhes em `scenes/interactables/README.md`.
+
 ## Tabela de flags
 
 | Flag | Capítulo | Significado |
