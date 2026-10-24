@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/interactables/note.gd" id="1"]
+
+[sub_resource type="BoxShape3D" id="Shape"]
+size = Vector3(0.5, 0.35, 0.05)
+
+[sub_resource type="StandardMaterial3D" id="Paper"]
+albedo_color = Color(0.85, 0.8, 0.65, 1)
+
+[sub_resource type="BoxMesh" id="Mesh"]
+material = SubResource("Paper")
+size = Vector3(0.5, 0.35, 0.05)
+
+[node name="Note" type="StaticBody3D"]
+script = ExtResource("1")
+examination_text = "[PROVISÓRIO] Nota de teste de interação.\n\nEste texto serve apenas para conferir a leitura de objetos."
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("Shape")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("Mesh")
