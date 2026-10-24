@@ -42,7 +42,7 @@ signal crouch_changed(crouching: bool)
 
 @export_group("Passos")
 ## Distância entre um passo e outro, em metros. Maior = passos mais pesados.
-@export var step_distance: float = 0.85
+@export_range(0.2, 3.0, 0.05) var step_distance: float = 0.85
 ## Liga ou desliga o balanço da câmera ao andar.
 @export var head_bob_enabled: bool = true
 ## Quanto a câmera desce a cada passo, em metros.
@@ -64,6 +64,7 @@ var _crouching: bool = false
 var _eye_height: float = 1.6
 var _step_progress: float = 0.0
 var _steps_taken: int = 0
+var _bob_weight: float = 0.0
 var _gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 @onready var head: Node3D = $Head
@@ -85,7 +86,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 
 	if event is InputEventMouseButton and event.pressed:
-		if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
+		# Só recaptura o mouse quando o jogador está ativo (não em conversas e menus).
+		if input_enabled and Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		return
 
@@ -150,19 +152,20 @@ func _set_body_height(height: float) -> void:
 func _update_steps_and_bob(delta: float) -> void:
 	var horizontal_speed: float = Vector2(velocity.x, velocity.z).length()
 	var moving: bool = is_on_floor() and horizontal_speed > 0.3
+	# Protege contra valores inválidos vindos do Inspetor.
+	var step_length: float = maxf(step_distance, 0.05)
 
+	# A distância só avança andando; parado, nada é contado.
 	if moving:
 		_step_progress += horizontal_speed * delta
-		var steps_now: int = floori(_step_progress / step_distance)
+		var steps_now: int = floori(_step_progress / step_length)
 		if steps_now > _steps_taken:
 			_steps_taken = steps_now
 			stepped.emit()
-	else:
-		# Volta suavemente para o fim do passo atual, sem contar um passo novo.
-		var rest: float = ceilf(_step_progress / step_distance) * step_distance
-		_step_progress = move_toward(_step_progress, rest, horizontal_speed * delta + 0.5 * delta)
 
+	# O balanço da câmera some suavemente ao parar, sem mexer na contagem de passos.
+	_bob_weight = move_toward(_bob_weight, 1.0 if moving else 0.0, 4.0 * delta)
 	var bob: float = 0.0
 	if head_bob_enabled:
-		bob = absf(sin(_step_progress / step_distance * PI)) * head_bob_amount
+		bob = absf(sin(_step_progress / step_length * PI)) * head_bob_amount * _bob_weight
 	head.position.y = _eye_height - bob
