@@ -70,7 +70,7 @@ var _gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var camera: Camera3D = $Head/Camera3D
 @onready var _collision: CollisionShape3D = $CollisionShape3D
 @onready var _body_shape: CapsuleShape3D = $CollisionShape3D.shape
-@onready var _ceiling_check: RayCast3D = $CeilingCheck
+@onready var _ceiling_check: ShapeCast3D = $CeilingCheck
 
 
 func _ready() -> void:
@@ -140,8 +140,10 @@ func _update_crouch(delta: float) -> void:
 func _set_body_height(height: float) -> void:
 	_body_shape.height = height
 	_collision.position.y = height / 2.0
-	# O detector de teto parte do topo do corpo agachado e mede até a altura em pé.
-	_ceiling_check.position.y = CROUCH_BODY_HEIGHT
+	# O detector de teto tem a largura do corpo: parte do topo do corpo agachado
+	# e varre até a altura em pé, para não levantar com parte do corpo sob um obstáculo.
+	var check_shape := _ceiling_check.shape as CylinderShape3D
+	_ceiling_check.position.y = CROUCH_BODY_HEIGHT - check_shape.height / 2.0
 	_ceiling_check.target_position = Vector3(0.0, STAND_BODY_HEIGHT - CROUCH_BODY_HEIGHT + 0.05, 0.0)
 
 
