@@ -15,11 +15,11 @@ Jogo curto de **terror psicológico e sobrenatural**, em **primeira pessoa**, fe
 
 | Quem | Papel |
 | --- | --- |
-| **Diretor (humano)** | Decide história e clima, testa no Godot, aprova ou recusa pull requests. Não programa — explique as coisas em linguagem simples. |
-| **Claude** (`@claude`) | Arquitetura, sistemas principais (jogador, escolhas, diálogos, save, troca de zonas), montagem de cenários, roteiro junto com o diretor, revisão do código do Codex. |
+| **Diretor (humano)** | Decide história, clima e design; testa o jogo ao final de cada fase. Não programa — explique as coisas em linguagem simples. |
+| **Claude** (`@claude`) | **Coordenador do projeto.** Planeja as fases, escreve e distribui as tarefas, faz o merge dos PRs aprovados. Também: arquitetura, sistemas principais (jogador, escolhas, diálogos, save, troca de zonas), montagem de cenários, roteiro junto com o diretor, revisão do código do Codex. |
 | **Codex** (`@codex`) | Tarefas bem delimitadas: interface e menus, interações com objetos, puzzles, efeitos visuais e sonoros, testes, bugs, revisão do código do Claude. |
 
-As duas IAs **não conversam diretamente**. Toda comunicação acontece por arquivos e pull requests neste repositório.
+As duas IAs **não conversam diretamente**. Toda comunicação acontece por arquivos, pull requests e comentários neste repositório. O Claude aciona o Codex comentando `@codex ...` nos pull requests.
 
 ## Fluxo de trabalho
 
@@ -32,8 +32,11 @@ As duas IAs **não conversam diretamente**. Toda comunicação acontece por arqu
    - o que foi feito;
    - como o diretor testa (passo a passo no Godot: qual cena abrir, quais teclas apertar);
    - o que ficou de fora ou pode dar problema.
-7. Ao terminar, mude o status para `revisão`. Depois que o diretor aprovar e o PR entrar no `main`, o status vira `feito`.
-8. Revise os PRs da outra IA quando o diretor pedir: aponte bugs, quebra de convenções e riscos. Seja específico.
+7. Ao terminar, mude o status para `revisão`.
+8. **Revisão cruzada:** todo PR do Claude é revisado pelo Codex (`@codex review`), e todo PR do Codex é revisado pelo Claude. Aponte bugs, quebra de convenções e riscos, de forma específica.
+9. **Merge:** com a revisão sem pendências e o projeto validado no Godot, o Claude faz o merge e marca a tarefa como `feito`. O Codex não faz merge.
+10. **Tarefas passadas pelo GitHub:** o Claude pode abrir um PR rascunho para uma tarefa `@codex` e pedir nos comentários `@codex faça a T-000`. Nesse caso, trabalhe **nesse mesmo branch** e responda no PR quando terminar.
+11. **O diretor testa por fase:** ao final de cada fase o Claude prepara uma versão jogável e um roteiro de teste. Decisões de história, clima e design são sempre do diretor.
 
 Se uma tarefa estiver ambígua, **não invente**: faça a parte clara e liste as dúvidas no PR.
 

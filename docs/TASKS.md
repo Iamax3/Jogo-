@@ -32,7 +32,7 @@ Regras: cada IA só pega tarefas com a sua marca. Antes de começar, mude o stat
 
 ### T-101 · Controle em primeira pessoa
 - **Dono:** @claude
-- **Status:** revisão
+- **Status:** feito
 - **Arquivos:** `scenes/player/player.tscn`, `scripts/player/player.gd`, `scenes/levels/player_sandbox.tscn` (área de teste provisória), seções `[input]` e `run/main_scene` do `project.godot`
 - **Pronto quando:** cena `player.tscn` com andar (WASD), olhar (mouse), agachar (Ctrl), passos lentos e pesados combinando com terror. Velocidade e sensibilidade são `@export`. Ações de input criadas: `move_forward`, `move_back`, `move_left`, `move_right`, `crouch`, `interact` (E), `flashlight` (F).
 
