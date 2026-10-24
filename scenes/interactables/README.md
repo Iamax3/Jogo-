@@ -7,13 +7,13 @@ Abra `scenes/interactables/interaction_demo.tscn` e aperte **F6** (executar a ce
 1. Mire no centro da nota: aparece **E — Examinar**.
 2. Aperte **E**: o texto abre e o jogador para de andar e olhar.
 3. Aperte **E** novamente ou **Esc**: o painel fecha e o controle volta. Segurar E não deve abrir e fechar repetidamente.
-4. Olhe para o chão ou afaste-se mais de 2,5 metros: a dica desaparece e E não abre nada.
+4. Olhe para o chão ou afaste-se mais de 3 metros: a dica desaparece e E não abre nada.
 5. Fora da leitura, **Esc** solta o mouse e esconde a dica; clique na janela para capturar de novo.
 
 ## Integrar ao cenário (Claude)
 
 - Instancie `scenes/interactables/interaction_ray.tscn` como filha direta de `Player/Head/Camera3D`, sem deslocamento ou rotação local. A cena já contém a interface; não adicione outra cópia de `interaction_prompt.tscn`.
-- O nó raiz é um `RayCast3D` apontado para o eixo local **-Z** da câmera. `interaction_distance` ajusta o alcance no Inspetor (padrão: 2,5 metros).
+- O nó raiz é um `RayCast3D` apontado para o eixo local **-Z** da câmera. `interaction_distance` ajusta o alcance no Inspetor (padrão: 3 metros).
 - O script encontra o ancestral `Player`, exclui seu corpo das colisões do raio e respeita `Player.input_enabled` e o mouse capturado. Cada acionamento de E atualiza o raio antes de escolher o alvo.
 - O raio considera o **primeiro corpo atingido**, sem atravessar paredes. Objetos e obstáculos devem estar em camadas incluídas na máscara do raio (padrão: camada 1). `Area3D` não participa desta implementação.
 - Instancie `note.tscn` no cenário e ajuste `examination_text` e `interaction_hint` no Inspetor. O painel não interpreta BBCode; o texto é literal. Textos longos podem ser rolados com a roda do mouse.
