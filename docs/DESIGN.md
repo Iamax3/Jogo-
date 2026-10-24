@@ -44,6 +44,16 @@ Ainda em definição pelo diretor. Perguntas em aberto:
 
 **Não invente história, personagens ou falas definitivas.** Use textos provisórios marcados com `[PROVISÓRIO]`.
 
+## Sistemas (API para as IAs)
+
+### Jogador — `scenes/player/player.tscn` (`class_name Player`)
+- Teclas: WASD anda, mouse olha, Ctrl (segurar) agacha, Esc solta o mouse, clique captura de novo.
+- `camera: Camera3D` — coloque como filhas dela as coisas que seguem o olhar (lanterna, RayCast3D de interação).
+- `input_enabled: bool` — `false` trava o jogador (conversas, menus).
+- Sinal `stepped` a cada passo (para som de passo) e `crouch_changed(crouching)`.
+- `is_crouching() -> bool`.
+- Ações de input já criadas: `move_forward`, `move_back`, `move_left`, `move_right`, `crouch`, `interact` (E), `flashlight` (F).
+
 ## Tabela de flags
 
 | Flag | Capítulo | Significado |
