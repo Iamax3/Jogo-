@@ -60,6 +60,11 @@ Ainda em definição pelo diretor. Perguntas em aberto:
 - `interaction_hint` (texto depois de "E —"), `examination_text` (abre a leitura; vazio = só reage), `interaction_enabled`, sinal `interacted`, método `interact()`.
 - Durante a leitura o jogador fica travado (`input_enabled = false`). Detalhes em `scenes/interactables/README.md`.
 
+### Lanterna — `scenes/player/flashlight.tscn` (`class_name Flashlight`)
+- Já vem no jogador, filha da câmera. F liga e desliga (não funciona com o jogador travado).
+- Bateria de 180 s ligada (`battery_duration`), pisca abaixo de 20%, apaga de vez ao esvaziar.
+- API: `set_enabled(bool)`, `is_enabled()`, `get_battery_ratio()` (0 a 1); sinais `toggled(is_on)` e `battery_depleted`.
+
 ## Tabela de flags
 
 | Flag | Capítulo | Significado |

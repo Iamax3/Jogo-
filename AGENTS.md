@@ -17,7 +17,9 @@ Jogo curto de **terror psicológico e sobrenatural**, em **primeira pessoa**, fe
 | --- | --- |
 | **Diretor (humano)** | Decide história, clima e design; testa o jogo ao final de cada fase. Não programa — explique as coisas em linguagem simples. |
 | **Claude** (`@claude`) | **Coordenador do projeto.** Planeja as fases, escreve e distribui as tarefas, faz o merge dos PRs aprovados. Também: arquitetura, sistemas principais (jogador, escolhas, diálogos, save, troca de zonas), montagem de cenários, roteiro junto com o diretor, revisão do código do Codex. |
-| **Codex** (`@codex`) | Tarefas bem delimitadas: interface e menus, interações com objetos, puzzles, efeitos visuais e sonoros, testes, bugs, revisão do código do Claude. |
+| **Codex** (`@codex`) | **Revisor automático** de todos os PRs (acionado com `@codex review`). Também faz tarefas de código quando o diretor passar uma tarefa diretamente para ele. |
+
+Por decisão do diretor, a partir da Fase 2 o **Claude implementa as tarefas** e o **Codex revisa** cada PR. Tarefas marcadas `@codex` no `TASKS.md` só existem quando o diretor quiser passá-las ao Codex.
 
 As duas IAs **não conversam diretamente**. Toda comunicação acontece por arquivos, pull requests e comentários neste repositório. O Claude aciona o Codex comentando `@codex ...` nos pull requests.
 

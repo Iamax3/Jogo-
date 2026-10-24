@@ -52,7 +52,7 @@ Regras: cada IA só pega tarefas com a sua marca. Antes de começar, mude o stat
 
 ### T-104 · Lanterna
 - **Dono:** @codex
-- **Status:** revisão
+- **Status:** feito
 - **Depende de:** T-101
 - **Arquivos:** `scenes/player/flashlight.tscn`, `scripts/player/flashlight.gd`
 - **Pronto quando:** cena separada com `SpotLight3D` que liga e desliga com F, tem bateria que descarrega aos poucos e pisca quando está fraca. Duração da bateria e intensidade são `@export`. A cena é feita para ser colocada como filha da câmera do jogador, sem editar `player.tscn` (o Claude faz a integração).
