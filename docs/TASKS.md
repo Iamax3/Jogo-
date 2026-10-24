@@ -21,7 +21,7 @@ Regras: cada IA só pega tarefas com a sua marca. Antes de começar, mude o stat
 
 ### T-003 · Predefinição de exportação para Windows
 - **Dono:** @codex
-- **Status:** pendente
+- **Status:** revisão
 - **Arquivos:** `export_presets.cfg`, `docs/EXPORTAR.md`
 - **Pronto quando:** existe uma predefinição "Windows Desktop" que exporta para `build/windows/`, e `docs/EXPORTAR.md` explica em passos simples como o diretor gera o `.exe`.
 
