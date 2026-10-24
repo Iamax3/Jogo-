@@ -16,7 +16,7 @@ Regras: cada IA só pega tarefas com a sua marca. Antes de começar, mude o stat
 
 ### T-002 · Preparar o computador do diretor
 - **Dono:** @diretor
-- **Status:** pendente
+- **Status:** feito
 - **Pronto quando:** Godot 4.7 instalado, repositório clonado (GitHub Desktop serve) e o projeto abre no Godot.
 
 ### T-003 · Predefinição de exportação para Windows
@@ -38,7 +38,7 @@ Regras: cada IA só pega tarefas com a sua marca. Antes de começar, mude o stat
 
 ### T-102 · Cena de teste com clima de terror
 - **Dono:** @claude
-- **Status:** revisão
+- **Status:** feito
 - **Depende de:** T-101
 - **Arquivos:** `scenes/levels/test_room.tscn`, `scripts/levels/`, `run/main_scene` do `project.godot`
 - **Pronto quando:** um quarto fechado com móveis simples, iluminação baixa, neblina volumétrica e `WorldEnvironment` configurado. O jogador da T-101 começa dentro dele. O quarto vira a **cena principal** do projeto (no lugar de `player_sandbox.tscn`), para a exportação da T-003 gerar algo jogável.

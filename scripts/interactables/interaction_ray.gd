@@ -2,7 +2,7 @@ extends RayCast3D
 ## Instancie esta cena como filha da câmera do Player.
 
 ## Alcance máximo de interação, em metros.
-@export_range(0.2, 5.0, 0.1) var interaction_distance: float = 2.5
+@export_range(0.2, 5.0, 0.1) var interaction_distance: float = 3.0
 
 var _player: Player
 var _target: Interactable

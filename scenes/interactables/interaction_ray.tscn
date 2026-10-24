@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" path="res://scenes/ui/interaction_prompt.tscn" id="2"]
 
 [node name="InteractionRay" type="RayCast3D"]
-target_position = Vector3(0, 0, -2.5)
+target_position = Vector3(0, 0, -3)
 collision_mask = 1
 collide_with_areas = false
 script = ExtResource("1")
